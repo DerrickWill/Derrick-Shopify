@@ -1,0 +1,150 @@
+/* ============================================================
+   Language Switcher
+   ============================================================ */
+
+:root {
+  --ls-height: 40px;
+  --ls-text-color: #081362;
+  --ls-border-color: #bfccda;
+  --ls-bg-color: #fff;
+  --ls-arrow-color: #081362;
+  --ls-hover-bg-color: #f1f4f8;
+  --ls-active-btn-bg: #192bab;
+  --ls-active-btn-text: #fff;
+  --ls-font-size: 16px;
+  --ls-border-radius: 20px;
+  --ls-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
+  --ls-flag-size: 16px;
+  --ls-gap: 8px;
+}
+
+/* Bar wrapper */
+.language-switcher-bar {
+  display: flex;
+  align-items: center;
+  padding: 6px 20px;
+  background-color: var(--ls-bg-color);
+}
+
+.language-switcher-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* The toggle trigger */
+.language-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ls-gap);
+  height: var(--ls-height);
+  padding: 0 14px;
+  background: var(--ls-bg-color);
+  color: var(--ls-text-color);
+  border: thin solid var(--ls-border-color);
+  border-radius: var(--ls-border-radius);
+  font-size: var(--ls-font-size);
+  font-weight: 400;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--ls-shadow);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.language-switcher__trigger:hover,
+.language-switcher__trigger:focus-visible {
+  background: var(--ls-hover-bg-color);
+  border-color: var(--ls-border-color);
+  outline: none;
+}
+
+.language-switcher__trigger[aria-expanded="true"] {
+  border-color: var(--ls-text-color);
+}
+
+/* Flag + name inside trigger */
+.language-switcher__flag-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ls-gap);
+}
+
+.language-switcher__flag {
+  width: var(--ls-flag-size);
+  height: auto;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.language-switcher__name {
+  line-height: 1;
+}
+
+/* Arrow icon */
+.language-switcher__arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ls-arrow-color);
+  transition: transform 0.2s;
+}
+
+.language-switcher__trigger[aria-expanded="true"] .language-switcher__arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown list */
+.language-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 9999;
+  min-width: 100%;
+  background: var(--ls-bg-color);
+  border: thin solid var(--ls-border-color);
+  border-radius: 12px;
+  box-shadow: var(--ls-shadow);
+  padding: 6px 0;
+  overflow: hidden;
+}
+
+.language-switcher__dropdown[hidden] {
+  display: none;
+}
+
+/* Each language option */
+.language-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: var(--ls-gap);
+  width: 100%;
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--ls-text-color);
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.language-switcher__option:hover,
+.language-switcher__option:focus-visible {
+  background: var(--ls-hover-bg-color);
+  outline: none;
+}
+
+.language-switcher__option--active {
+  background: var(--ls-active-btn-bg);
+  color: var(--ls-active-btn-text);
+  font-weight: 600;
+}
+
+.language-switcher__option--active:hover {
+  background: var(--ls-active-btn-bg);
+}
+
+.language-switcher__option-name {
+  line-height: 1;
+}

@@ -1,0 +1,139 @@
+{% comment %}
+  Language Switcher Section
+  Uses Shopify's native localization API.
+  Add {% section 'language-switcher' %} to your theme layout (e.g. theme.liquid).
+{% endcomment %}
+
+{%- if localization.available_languages.size >= 1 -%}
+
+{{ 'language-switcher.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'language-switcher.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  #languageSwitcherContainer {
+    --ls-bg-color: {{ section.settings.bg_color }};
+    --ls-text-color: {{ section.settings.text_color }};
+    --ls-border-color: {{ section.settings.border_color }};
+    --ls-hover-bg-color: {{ section.settings.hover_bg_color }};
+    --ls-active-btn-bg: {{ section.settings.active_btn_bg }};
+    --ls-font-size: {{ section.settings.font_size }}px;
+    --ls-height: {{ section.settings.switcher_height }}px;
+  }
+</style>
+
+<div class="language-switcher-bar">
+  <div class="language-switcher-container" id="languageSwitcherContainer" translate="no">
+
+    {%- form 'localization', id: 'language-switcher-form' -%}
+      <input type="hidden" name="locale_code" id="language-code-input" value="{{ localization.language.iso_code }}">
+    {%- endform -%}
+
+    <div class="language-switcher" id="languageSwitcher">
+
+      <button
+        type="button"
+        class="language-switcher__trigger"
+        id="languageSwitcherTrigger"
+        aria-expanded="false"
+        aria-haspopup="listbox"
+        aria-controls="languageSwitcherDropdown"
+        aria-label="Language switcher"
+      >
+        <span class="language-switcher__flag-wrap">
+          {%- render 'language-flag', iso_code: localization.language.iso_code -%}
+          <span class="language-switcher__name">{{ localization.language.endonym_name }}</span>
+        </span>
+        <span class="language-switcher__arrow" aria-hidden="true">
+          <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.61328 0.53125L8.24219 0.140625C8.14453 0.0429688 7.98828 0.0429688 7.91016 0.140625L4.375 3.67578L0.820312 0.140625C0.742188 0.0429688 0.585938 0.0429688 0.488281 0.140625L0.117188 0.53125C0.0195312 0.609375 0.0195312 0.765625 0.117188 0.863281L4.19922 4.94531C4.29688 5.04297 4.43359 5.04297 4.53125 4.94531L8.61328 0.863281C8.71094 0.765625 8.71094 0.609375 8.61328 0.53125Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </button>
+
+      <div
+        class="language-switcher__dropdown"
+        id="languageSwitcherDropdown"
+        role="listbox"
+        aria-label="Language switcher"
+        hidden
+      >
+        {%- for language in localization.available_languages -%}
+          <button
+            type="button"
+            role="option"
+            class="language-switcher__option{% if language.iso_code == localization.language.iso_code %} language-switcher__option--active{% endif %}"
+            data-code="{{ language.iso_code }}"
+            aria-selected="{% if language.iso_code == localization.language.iso_code %}true{% else %}false{% endif %}"
+          >
+            {%- render 'language-flag', iso_code: language.iso_code -%}
+            <span class="language-switcher__option-name">{{ language.endonym_name }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Language Switcher",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Bar background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#081362"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#bfccda"
+    },
+    {
+      "type": "color",
+      "id": "hover_bg_color",
+      "label": "Hover background color",
+      "default": "#f1f4f8"
+    },
+    {
+      "type": "color",
+      "id": "active_btn_bg",
+      "label": "Active button background",
+      "default": "#192bab"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size (px)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "switcher_height",
+      "label": "Switcher height (px)",
+      "min": 28,
+      "max": 64,
+      "step": 2,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Language Switcher"
+    }
+  ]
+}
+{% endschema %}

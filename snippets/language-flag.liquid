@@ -1,0 +1,50 @@
+{% comment %}
+  Renders a flag image for the given language ISO code.
+  Usage: {% render 'language-flag', iso_code: language.iso_code %}
+
+  Maps language codes to country codes so flag CDN URLs resolve correctly.
+  English (en) → GB flag; French (fr) → FR flag, etc.
+{% endcomment %}
+
+{%- liquid
+  assign flag_code = iso_code | downcase | slice: 0, 2
+
+  case flag_code
+    when 'en'
+      assign flag_code = 'gb'
+    when 'zh'
+      assign flag_code = 'cn'
+    when 'ar'
+      assign flag_code = 'sa'
+    when 'ko'
+      assign flag_code = 'kr'
+    when 'ja'
+      assign flag_code = 'jp'
+    when 'uk'
+      assign flag_code = 'ua'
+    when 'vi'
+      assign flag_code = 'vn'
+    when 'da'
+      assign flag_code = 'dk'
+    when 'sv'
+      assign flag_code = 'se'
+    when 'cs'
+      assign flag_code = 'cz'
+    when 'el'
+      assign flag_code = 'gr'
+    when 'he'
+      assign flag_code = 'il'
+    when 'nb'
+      assign flag_code = 'no'
+  endcase
+-%}
+
+<img
+  class="language-switcher__flag"
+  src="{{ flag_code | prepend: 'https://flagcdn.com/16x12/' | append: '.png' }}"
+  srcset="{{ flag_code | prepend: 'https://flagcdn.com/32x24/' | append: '.png 2x' }}"
+  width="16"
+  height="12"
+  alt="{{ iso_code }}"
+  loading="lazy"
+>
