@@ -1,0 +1,44 @@
+(() => {
+  function liveTracking(res) {
+    if (res.status !== 404)
+      return;
+    const entry = performance.getEntriesByType('resource').find(entry => {
+      return entry.initiatorType === 'script' && entry.name.match(/redirectify/);
+    });
+    if (!entry)
+      return;
+    const url = new URL(entry.name);
+    const data = new FormData();
+    data.append('myshopify_domain', url.searchParams.get('shop'));
+    data.append('path', location.pathname + location.search);
+
+    fetch('https://redirectify.app/api/error_paths/tracking', {
+      method: 'POST',
+      body: data,
+    }).then(applyRedirectRules);
+  }
+
+  // TODO: This should really be handled server-side for consistency.
+  function applyRedirectRules() {
+    [].forEach(({ pattern, replace }) => {
+      const regexp = new RegExp(pattern);
+
+      if (regexp.test(location.pathname)) {
+        const redirectURL = location.pathname
+          .replace(regexp, replace)
+          .replace('{search}', () =>
+            location.pathname
+              .split('/')
+              .at(-1)
+              .replace(/[^0-9A-Za-z]+/g, '+')
+          );
+
+        location.replace(redirectURL);
+      }
+    });
+  }
+
+  fetch(location.href, {
+    method: 'HEAD',
+  }).then(liveTracking);
+})();
