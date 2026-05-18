@@ -1,130 +1,63 @@
-import { Component } from '@theme/component';
+document.addEventListener('DOMContentLoaded', function () {
 
-/**
- * Announcement banner custom element that allows fading between content.
- * Based on the Slideshow component.
- *
- * @typedef {object} Refs
- * @property {HTMLElement} slideshowContainer
- * @property {HTMLElement[]} [slides]
- * @property {HTMLButtonElement} [previous]
- * @property {HTMLButtonElement} [next]
- *
- * @extends {Component<Refs>}
- */
-export class AnnouncementBar extends Component {
-  #current = 0;
+  /* ---- Language switcher ---- */
+  var langBtn  = document.getElementById('annLangBtn');
+  var langDrop = document.getElementById('annLangDrop');
+  var langInput = document.getElementById('ann-lang-input');
+  var langForm  = document.getElementById('ann-lang-form');
 
-  /**
-   * The interval ID for automatic playback.
-   * @type {number|undefined}
-   */
-  #interval = undefined;
+  if (langBtn && langDrop) {
+    langBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = !langDrop.hidden;
+      langDrop.hidden = isOpen;
+      langBtn.setAttribute('aria-expanded', String(!isOpen));
+    });
 
-  connectedCallback() {
-    super.connectedCallback();
+    langDrop.querySelectorAll('.ann-bar__lang-opt').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var code = btn.getAttribute('data-code');
+        if (!code || !langInput || !langForm) return;
+        langInput.value = code;
+        langForm.submit();
+      });
+    });
 
-    this.addEventListener('mouseenter', this.suspend);
-    this.addEventListener('mouseleave', this.resume);
-    document.addEventListener('visibilitychange', this.#handleVisibilityChange);
+    document.addEventListener('click', function (e) {
+      if (langDrop && !langDrop.hidden) {
+        var container = langBtn.closest('.ann-bar__item--lang');
+        if (container && !container.contains(e.target)) {
+          langDrop.hidden = true;
+          langBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
 
-    this.play();
-  }
-
-  next() {
-    this.current += 1;
-  }
-
-  previous() {
-    this.current -= 1;
-  }
-
-  /**
-   * Starts automatic slide playback.
-   * @param {number} [interval] - The time interval in seconds between slides.
-   */
-  play(interval = this.autoplayInterval) {
-    if (!this.autoplay) return;
-
-    this.paused = false;
-
-    this.#interval = setInterval(() => {
-      if (this.matches(':hover') || document.hidden) return;
-
-      this.next();
-    }, interval);
-  }
-
-  /**
-   * Pauses automatic slide playback.
-   */
-  pause() {
-    this.paused = true;
-    this.suspend();
-  }
-
-  get paused() {
-    return this.hasAttribute('paused');
-  }
-
-  set paused(paused) {
-    this.toggleAttribute('paused', paused);
-  }
-
-  /**
-   * Suspends automatic slide playback.
-   */
-  suspend() {
-    clearInterval(this.#interval);
-    this.#interval = undefined;
-  }
-
-  /**
-   * Resumes automatic slide playback if autoplay is enabled.
-   */
-  resume() {
-    if (!this.autoplay || this.paused) return;
-
-    this.pause();
-    this.play();
-  }
-
-  get autoplay() {
-    return Boolean(this.autoplayInterval);
-  }
-
-  get autoplayInterval() {
-    const interval = this.getAttribute('autoplay');
-    const value = parseInt(`${interval}`, 10);
-
-    if (Number.isNaN(value)) return undefined;
-
-    return value * 1000;
-  }
-
-  get current() {
-    return this.#current;
-  }
-
-  set current(current) {
-    this.#current = current;
-
-    let relativeIndex = current % (this.refs.slides ?? []).length;
-    if (relativeIndex < 0) {
-      relativeIndex += (this.refs.slides ?? []).length;
-    }
-
-    this.refs.slides?.forEach((slide, index) => {
-      slide.setAttribute('aria-hidden', `${index !== relativeIndex}`);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && langDrop && !langDrop.hidden) {
+        langDrop.hidden = true;
+        langBtn.setAttribute('aria-expanded', 'false');
+        langBtn.focus();
+      }
     });
   }
 
-  /**
-   * Pause the slideshow when the page is hidden.
-   */
-  #handleVisibilityChange = () => (document.hidden ? this.pause() : this.resume());
-}
+  /* ---- Close bar ---- */
+  var closeBtn = document.getElementById('annBarClose');
+  var annBar   = document.getElementById('annBar');
 
-if (!customElements.get('announcement-bar-component')) {
-  customElements.define('announcement-bar-component', AnnouncementBar);
-}
+  if (closeBtn && annBar) {
+    closeBtn.addEventListener('click', function () {
+      annBar.hidden = true;
+      try { sessionStorage.setItem('ann_bar_closed', '1'); } catch (e) {}
+    });
+
+    /* Restore dismissed state across page loads */
+    try {
+      if (sessionStorage.getItem('ann_bar_closed') === '1') {
+        annBar.hidden = true;
+      }
+    } catch (e) {}
+  }
+
+});

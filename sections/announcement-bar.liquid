@@ -1,0 +1,243 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'announcement-bar.js' | asset_url }}" defer="defer"></script>
+
+{%- unless section.settings.hide_bar -%}
+<div class="ann-bar" id="annBar" style="--ann-bg: {{ section.settings.bg_color }}; --ann-text: {{ section.settings.text_color }}; --ann-accent: {{ section.settings.accent_color }};">
+  <div class="ann-bar__inner">
+
+    {%- for block in section.blocks -%}
+
+      {%- case block.type -%}
+
+        {%- when 'link' -%}
+          <a
+            href="{{ block.settings.url | default: '#' }}"
+            class="ann-bar__item"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.icon != blank -%}
+              <span class="ann-bar__icon">
+                {%- render 'ann-icon', name: block.settings.icon -%}
+              </span>
+            {%- endif -%}
+            <span class="ann-bar__text">{{ block.settings.text }}</span>
+          </a>
+
+        {%- when 'promo' -%}
+          <div class="ann-bar__item ann-bar__item--promo" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <span class="ann-bar__icon ann-bar__icon--accent">
+                {%- render 'ann-icon', name: block.settings.icon -%}
+              </span>
+            {%- endif -%}
+            <span class="ann-bar__text ann-bar__text--accent">
+              {%- if block.settings.bold_text != blank -%}
+                <strong>{{ block.settings.bold_text }}</strong>
+              {%- endif -%}
+              {{ block.settings.text }}
+            </span>
+          </div>
+
+        {%- when 'language' -%}
+          {%- if localization.available_languages.size >= 1 -%}
+            <div class="ann-bar__item ann-bar__item--lang" {{ block.shopify_attributes }}>
+              <span class="ann-bar__icon">
+                {%- render 'ann-icon', name: 'globe' -%}
+              </span>
+              {%- form 'localization', id: 'ann-lang-form' -%}
+                <input type="hidden" name="locale_code" id="ann-lang-input" value="{{ localization.language.iso_code }}">
+                <button type="button" class="ann-bar__lang-btn" id="annLangBtn" aria-expanded="false" aria-haspopup="listbox">
+                  <span>{{ localization.language.endonym_name }}</span>
+                  <span class="ann-bar__lang-arrow">&#8594;</span>
+                </button>
+                <ul class="ann-bar__lang-drop" id="annLangDrop" role="listbox" hidden>
+                  {%- for lang in localization.available_languages -%}
+                    <li role="option" aria-selected="{% if lang.iso_code == localization.language.iso_code %}true{% else %}false{% endif %}">
+                      <button
+                        type="button"
+                        class="ann-bar__lang-opt{% if lang.iso_code == localization.language.iso_code %} is-active{% endif %}"
+                        data-code="{{ lang.iso_code }}"
+                      >
+                        {{ lang.endonym_name }}
+                      </button>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endform -%}
+            </div>
+          {%- endif -%}
+
+      {%- endcase -%}
+
+    {%- endfor -%}
+
+    {%- if section.blocks.size == 0 and request.design_mode -%}
+      <span class="ann-bar__placeholder">Add blocks to build your announcement bar.</span>
+    {%- endif -%}
+
+  </div>
+
+  {%- if section.settings.show_close -%}
+    <button class="ann-bar__close" id="annBarClose" aria-label="Close announcement bar">&#10005;</button>
+  {%- endif -%}
+</div>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#0d1b3e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / highlight color",
+      "default": "#f5a623"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close",
+      "label": "Show close button",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_bar",
+      "label": "Hide bar",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "phone",    "label": "Phone" },
+            { "value": "chat",     "label": "Chat / Contact" },
+            { "value": "help",     "label": "Help / Question" },
+            { "value": "tag",      "label": "Tag / Offer" },
+            { "value": "truck",    "label": "Truck / Shipping" },
+            { "value": "globe",    "label": "Globe" },
+            { "value": "none",     "label": "No icon" }
+          ],
+          "default": "chat"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Label",
+          "default": "Contact Us"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    },
+    {
+      "type": "promo",
+      "name": "Promo message",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "chat",  "label": "Chat" },
+            { "value": "tag",   "label": "Tag / Offer" },
+            { "value": "truck", "label": "Truck / Shipping" },
+            { "value": "star",  "label": "Star" },
+            { "value": "none",  "label": "No icon" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "bold_text",
+          "label": "Bold prefix text",
+          "default": "FREE SHIPPING"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message",
+          "default": "on all orders over $79 (CAD)"
+        }
+      ]
+    },
+    {
+      "type": "language",
+      "name": "Language switcher",
+      "limit": 1,
+      "settings": []
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "icon": "phone",
+            "text": "+1 (514) MON-ITEK",
+            "url": "/pages/contact-us"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "icon": "chat",
+            "text": "Contact Us",
+            "url": "/pages/contact-us"
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "icon": "help",
+            "text": "Help Center",
+            "url": "/pages/need-help"
+          }
+        },
+        {
+          "type": "promo",
+          "settings": {
+            "icon": "truck",
+            "bold_text": "FREE SHIPPING",
+            "text": "on all orders over $79 (CAD)"
+          }
+        },
+        {
+          "type": "promo",
+          "settings": {
+            "icon": "tag",
+            "bold_text": "",
+            "text": "Save more with our battery deals!"
+          }
+        },
+        {
+          "type": "language"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
