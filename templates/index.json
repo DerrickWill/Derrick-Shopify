@@ -397,6 +397,90 @@
         "padding-block-end": 40
       }
     },
+    "section_PtNwVF": {
+      "type": "section",
+      "blocks": {
+        "button_eMwizK": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Find Your Battery",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 30,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "button_BgWxhG": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Find Your Catridges",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 30,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
+        "button_zDx3Wp": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Expert Support",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button-secondary",
+            "width": "custom",
+            "custom_width": 30,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "button_eMwizK",
+        "button_BgWxhG",
+        "button_zDx3Wp"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "scheme-1",
+        "background_media": "image",
+        "video_position": "cover",
+        "background_image": "shopify://shop_images/battery1400_1920x_f7ad7648-5d76-4113-9309-6509dd3aa29a.jpg",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -595,6 +679,7 @@
   "order": [
     "announcement_bar_CxWwkd",
     "layered_slideshow_rAD8ba",
+    "section_PtNwVF",
     "product_list_fa6P9H"
   ]
 }
