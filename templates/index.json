@@ -15,9 +15,9 @@
         "promo_mNHdPx": {
           "type": "promo",
           "settings": {
-            "icon": "truck",
+            "icon": "star",
             "bold_text": "365 Day GUARANTEE",
-            "text": "100% Secure Payment"
+            "text": ""
           }
         },
         "promo_JtieEi": {
@@ -25,23 +25,23 @@
           "settings": {
             "icon": "truck",
             "bold_text": "FAST SHIPPING",
-            "text": "Ships from Canada"
+            "text": ""
           }
         },
         "promo_KHbDUG": {
           "type": "promo",
           "settings": {
-            "icon": "truck",
+            "icon": "tag",
             "bold_text": "Easy Returns",
-            "text": "30 Days Return Policy"
+            "text": ""
           }
         },
         "promo_hBFbKV": {
           "type": "promo",
           "settings": {
-            "icon": "truck",
+            "icon": "chat",
             "bold_text": "4.9/5 RATING",
-            "text": "40000~ Happy Customers"
+            "text": ""
           }
         }
       },
