@@ -64,12 +64,29 @@
     "hero_jVaWmY": {
       "type": "hero",
       "blocks": {
-        "footer_policy_list_jMggGr": {
-          "type": "footer-policy-list",
-          "name": "t:names.policy_list",
+        "text_dJMpMx": {
+          "type": "text",
+          "name": "t:names.text",
           "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
+            "text": "<h4>SHOP SMART,  SAVE BIG</h4>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
           },
           "blocks": {}
         },
@@ -77,7 +94,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>asdfasdfasdfasdf</p>",
+            "text": "<p>OFFICE SUPPLIES<br/>STATIONARY  & FURNITURE</p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -99,6 +116,32 @@
           },
           "blocks": {}
         },
+        "text_4CQx8z": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Everything your workspace needs,<br/>at amazing low prices.</p><p></p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h4",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "button_H9gpTf": {
           "type": "button",
           "name": "t:names.button",
@@ -106,18 +149,19 @@
             "label": "Shop all",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
+            "style_class": "button",
+            "width": "custom",
+            "custom_width": 28,
             "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+            "custom_width_mobile": 61
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "footer_policy_list_jMggGr",
+        "text_dJMpMx",
         "text_YLPk4p",
+        "text_4CQx8z",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
