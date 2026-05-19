@@ -199,10 +199,12 @@
   <div class="site-footer__bottom">
     <div class="site-footer__container">
       <p class="footer-copyright">
+        {%- assign current_year = 'now' | date: '%Y' -%}
+        {%- assign year_token = '{' | append: 'year}' -%}
         {%- if section.settings.copyright_text != blank -%}
-          {{ section.settings.copyright_text | replace: '{year}', 'now' | date: '%Y' }}
+          {{ section.settings.copyright_text | replace: year_token, current_year }}
         {%- else -%}
-          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.
+          &copy; {{ current_year }} {{ shop.name }}. All Rights Reserved.
         {%- endif -%}
       </p>
     </div>
