@@ -400,21 +400,6 @@
     "section_PtNwVF": {
       "type": "section",
       "blocks": {
-        "button_eMwizK": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Find Your Battery",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "custom",
-            "custom_width": 35,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        },
         "button_BgWxhG": {
           "type": "button",
           "name": "t:names.button",
@@ -447,7 +432,6 @@
         }
       },
       "block_order": [
-        "button_eMwizK",
         "button_BgWxhG",
         "button_zDx3Wp"
       ],
