@@ -681,7 +681,7 @@
         "section_height": "custom",
         "section_height_custom": 5,
         "color_scheme": "scheme-1",
-        "background_media": "image",
+        "background_media": "none",
         "video_position": "cover",
         "background_image": "shopify://shop_images/battery1400_1920x_f7ad7648-5d76-4113-9309-6509dd3aa29a.jpg",
         "background_image_position": "cover",
