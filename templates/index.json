@@ -499,8 +499,8 @@
         "overlay_color": "#0000000f",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 14,
+        "padding-block-end": 14
       }
     },
     "product_list_fa6P9H": {
@@ -843,8 +843,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "padding-block-start": 14,
+        "padding-block-end": 14
       }
     },
     "section_63KrWi": {
