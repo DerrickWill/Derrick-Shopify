@@ -404,6 +404,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
+            "image": "shopify://shop_images/photo_2026-05-19_18-02-41.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "custom",
@@ -426,6 +427,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
+            "image": "shopify://shop_images/photo_2026-05-19_18-02-45.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "custom",
@@ -448,6 +450,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
+            "image": "shopify://shop_images/photo_2026-05-19_18-02-34.jpg",
             "link": "",
             "image_ratio": "adapt",
             "width": "custom",
