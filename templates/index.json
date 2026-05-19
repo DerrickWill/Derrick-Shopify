@@ -397,75 +397,6 @@
         "padding-block-end": 40
       }
     },
-    "section_PtNwVF": {
-      "type": "section",
-      "blocks": {
-        "button_BgWxhG": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Find Your Catridges",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "custom",
-            "custom_width": 35,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        },
-        "button_zDx3Wp": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Expert Support",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "custom",
-            "custom_width": 35,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "button_BgWxhG",
-        "button_zDx3Wp"
-      ],
-      "custom_css": [],
-      "name": "t:names.custom_section",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 0,
-        "section_width": "page-width",
-        "section_height": "custom",
-        "section_height_custom": 5,
-        "color_scheme": "scheme-1",
-        "background_media": "image",
-        "video_position": "cover",
-        "background_image": "shopify://shop_images/battery1400_1920x_f7ad7648-5d76-4113-9309-6509dd3aa29a.jpg",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 0,
-        "border_opacity": 0,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#0000000f",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -660,18 +591,110 @@
         "padding-block-end": 48
       }
     },
-    "divider_FqQ8Yj": {
-      "type": "divider",
-      "name": "t:names.divider_section",
+    "section_PtNwVF": {
+      "type": "section",
+      "blocks": {
+        "image_JRh6qB": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_gmeUXP": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_WxbiP3": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_JRh6qB",
+        "image_gmeUXP",
+        "image_WxbiP3"
+      ],
+      "custom_css": [],
+      "name": "t:names.custom_section",
       "settings": {
-        "color_scheme": "",
-        "section_width": "full-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 16,
-        "padding-block-end": 16
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 60,
+        "section_width": "page-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "scheme-1",
+        "background_media": "image",
+        "video_position": "cover",
+        "background_image": "shopify://shop_images/battery1400_1920x_f7ad7648-5d76-4113-9309-6509dd3aa29a.jpg",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 0,
+        "border_opacity": 0,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#0000000f",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "section_63KrWi": {
@@ -1005,14 +1028,118 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "section_zJrgTQ": {
+      "type": "section",
+      "blocks": {
+        "image_PebpkR": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_KQ9r3r": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "image_EezKtX": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 21,
+            "width_mobile": "custom",
+            "custom_width_mobile": 21,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_PebpkR",
+        "image_KQ9r3r",
+        "image_EezKtX"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "row",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "center",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 60,
+        "section_width": "full-width",
+        "section_height": "custom",
+        "section_height_custom": 5,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "announcement_bar_CxWwkd",
     "layered_slideshow_rAD8ba",
-    "section_PtNwVF",
     "product_list_fa6P9H",
-    "divider_FqQ8Yj",
-    "section_63KrWi"
+    "section_PtNwVF",
+    "section_63KrWi",
+    "section_zJrgTQ"
   ]
 }
