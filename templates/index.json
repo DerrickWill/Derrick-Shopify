@@ -68,6 +68,7 @@
           "type": "_layered-slide",
           "settings": {
             "media_type_1": "image",
+            "image_1": "shopify://shop_images/kartr1400_1920x_5d3f9daf-a38e-4dd8-a3e5-9485d83d48bb.webp",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -191,6 +192,7 @@
           "type": "_layered-slide",
           "settings": {
             "media_type_1": "image",
+            "image_1": "shopify://shop_images/office1400_2e9107bd-728f-427a-9404-0ebbcb948480_1920x_1.webp",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -287,6 +289,7 @@
           "type": "_layered-slide",
           "settings": {
             "media_type_1": "image",
+            "image_1": "shopify://shop_images/battery1400_1920x_d65ca21a-13b4-4c71-b636-51420f38318f.jpg",
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
