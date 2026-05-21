@@ -26,6 +26,7 @@
 
     {%- form 'localization', id: 'language-switcher-form' -%}
       <input type="hidden" name="locale_code" id="language-code-input" value="{{ localization.language.iso_code }}">
+      <input type="hidden" name="return_to" value="{{ request.path }}">
     {%- endform -%}
 
     <div class="language-switcher" id="languageSwitcher">
@@ -37,7 +38,7 @@
         aria-expanded="false"
         aria-haspopup="listbox"
         aria-controls="languageSwitcherDropdown"
-        aria-label="Language switcher"
+        aria-label="{{ 'announcement_bar.language_label' | t }}"
       >
         <span class="language-switcher__flag-wrap">
           {%- render 'language-flag', iso_code: localization.language.iso_code -%}
@@ -54,7 +55,7 @@
         class="language-switcher__dropdown"
         id="languageSwitcherDropdown"
         role="listbox"
-        aria-label="Language switcher"
+        aria-label="{{ 'announcement_bar.language_label' | t }}"
         hidden
       >
         {%- for language in localization.available_languages -%}

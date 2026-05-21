@@ -323,6 +323,11 @@
       "sticky_add_to_cart": "Barre d’ajout rapide au panier"
     }
   },
+  "announcement_bar": {
+    "close": "Fermer la barre d'annonce",
+    "placeholder": "Ajoutez des blocs pour créer votre barre d'annonce.",
+    "language_label": "Sélectionner la langue"
+  },
   "fields": {
     "separator": "à"
   },

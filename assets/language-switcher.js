@@ -6,17 +6,18 @@
 (function () {
   'use strict';
 
-  const trigger = document.getElementById('languageSwitcherTrigger');
-  const dropdown = document.getElementById('languageSwitcherDropdown');
-  const codeInput = document.getElementById('language-code-input');
-  const form = document.getElementById('language-switcher-form');
+  const trigger   = /** @type {HTMLElement|null} */   (document.getElementById('languageSwitcherTrigger'));
+  const dropdown  = /** @type {HTMLElement|null} */   (document.getElementById('languageSwitcherDropdown'));
+  const codeInput = /** @type {HTMLInputElement|null} */ (document.getElementById('language-code-input'));
+  const form      = /** @type {HTMLFormElement|null} */ (document.getElementById('language-switcher-form'));
 
   if (!trigger || !dropdown || !codeInput || !form) return;
 
   function openDropdown() {
     dropdown.hidden = false;
     trigger.setAttribute('aria-expanded', 'true');
-    dropdown.querySelector('.language-switcher__option')?.focus();
+    const first = /** @type {HTMLElement|null} */ (dropdown && dropdown.querySelector('.language-switcher__option'));
+    if (first) first.focus();
   }
 
   function closeDropdown() {
@@ -48,16 +49,21 @@
   // Close when clicking outside
   document.addEventListener('click', function (e) {
     const container = document.getElementById('languageSwitcherContainer');
-    if (container && !container.contains(e.target)) closeDropdown();
+    if (container && !container.contains(/** @type {Node} */ (e.target))) closeDropdown();
   });
 
   // Language selection
   dropdown.querySelectorAll('.language-switcher__option').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const code = btn.dataset.code;
+    var optBtn = /** @type {HTMLButtonElement} */ (btn);
+    optBtn.addEventListener('click', function () {
+      const code = optBtn.dataset.code;
       if (!code) return;
       codeInput.value = code;
-      form.submit();
+      if (form.requestSubmit) {
+        form.requestSubmit();
+      } else {
+        form.submit();
+      }
     });
   });
 })();

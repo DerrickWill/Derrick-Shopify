@@ -10,6 +10,10 @@
       {%- case block.type -%}
 
         {%- when 'link' -%}
+          {%- assign link_label = block.settings.text -%}
+          {%- if localization.language.iso_code == 'fr' and block.settings.text_fr != blank -%}
+            {%- assign link_label = block.settings.text_fr -%}
+          {%- endif -%}
           <a
             href="{{ block.settings.url | default: '#' }}"
             class="ann-bar__item"
@@ -20,10 +24,16 @@
                 {%- render 'ann-icon', name: block.settings.icon -%}
               </span>
             {%- endif -%}
-            <span class="ann-bar__text">{{ block.settings.text }}</span>
+            <span class="ann-bar__text">{{ link_label }}</span>
           </a>
 
         {%- when 'promo' -%}
+          {%- assign promo_bold = block.settings.bold_text -%}
+          {%- assign promo_text = block.settings.text -%}
+          {%- if localization.language.iso_code == 'fr' -%}
+            {%- if block.settings.bold_text_fr != blank -%}{%- assign promo_bold = block.settings.bold_text_fr -%}{%- endif -%}
+            {%- if block.settings.text_fr != blank -%}{%- assign promo_text = block.settings.text_fr -%}{%- endif -%}
+          {%- endif -%}
           <div class="ann-bar__item ann-bar__item--promo" {{ block.shopify_attributes }}>
             {%- if block.settings.icon != blank -%}
               <span class="ann-bar__icon ann-bar__icon--accent">
@@ -31,10 +41,10 @@
               </span>
             {%- endif -%}
             <span class="ann-bar__text ann-bar__text--accent">
-              {%- if block.settings.bold_text != blank -%}
-                <strong>{{ block.settings.bold_text }}</strong>
+              {%- if promo_bold != blank -%}
+                <strong>{{ promo_bold }}</strong>
               {%- endif -%}
-              {{ block.settings.text }}
+              {{ promo_text }}
             </span>
           </div>
 
@@ -73,13 +83,13 @@
     {%- endfor -%}
 
     {%- if section.blocks.size == 0 and request.design_mode -%}
-      <span class="ann-bar__placeholder">Add blocks to build your announcement bar.</span>
+      <span class="ann-bar__placeholder">{{ 'announcement_bar.placeholder' | t }}</span>
     {%- endif -%}
 
   </div>
 
   {%- if section.settings.show_close -%}
-    <button class="ann-bar__close" id="annBarClose" aria-label="Close announcement bar">&#10005;</button>
+    <button class="ann-bar__close" id="annBarClose" aria-label="{{ 'announcement_bar.close' | t }}">&#10005;</button>
   {%- endif -%}
 </div>
 {%- endunless -%}
@@ -142,8 +152,12 @@
         {
           "type": "text",
           "id": "text",
-          "label": "Label",
-          "default": "Contact Us"
+          "label": "Label (English)"
+        },
+        {
+          "type": "text",
+          "id": "text_fr",
+          "label": "Label (French)"
         },
         {
           "type": "url",
@@ -172,14 +186,22 @@
         {
           "type": "text",
           "id": "bold_text",
-          "label": "Bold prefix text",
-          "default": "FREE SHIPPING"
+          "label": "Bold prefix text (English)"
+        },
+        {
+          "type": "text",
+          "id": "bold_text_fr",
+          "label": "Bold prefix text (French)"
         },
         {
           "type": "text",
           "id": "text",
-          "label": "Message",
-          "default": "on all orders over $79 (CAD)"
+          "label": "Message (English)"
+        },
+        {
+          "type": "text",
+          "id": "text_fr",
+          "label": "Message (French)"
         }
       ]
     },

@@ -814,6 +814,11 @@
       }
     }
   },
+  "announcement_bar": {
+    "close": "Close announcement bar",
+    "placeholder": "Add blocks to build your announcement bar.",
+    "language_label": "Select language"
+  },
   "customer_accounts": {
     "orders": {
       "order_list": {

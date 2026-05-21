@@ -19,6 +19,7 @@
           "settings": {
             "icon": "phone",
             "text": "+1 (514) MON-ITEK",
+            "text_fr": "+1 (514) MON-ITEK",
             "url": "/pages/contact-us"
           }
         },
@@ -27,6 +28,7 @@
           "settings": {
             "icon": "chat",
             "text": "Contact Us",
+            "text_fr": "Nous contacter",
             "url": "/pages/contact-us"
           }
         },
@@ -35,6 +37,7 @@
           "settings": {
             "icon": "help",
             "text": "Help Center",
+            "text_fr": "Centre d'aide",
             "url": "/pages/need-help"
           }
         },
@@ -43,7 +46,9 @@
           "settings": {
             "icon": "truck",
             "bold_text": "FREE SHIPPING",
-            "text": "on all orders over $79 (CAD)"
+            "bold_text_fr": "LIVRAISON GRATUITE",
+            "text": "on all orders over $79 (CAD)",
+            "text_fr": "pour toute commande de plus de 79 $ (CAD)"
           }
         },
         "promo_qxUDii": {
@@ -51,7 +56,9 @@
           "settings": {
             "icon": "tag",
             "bold_text": "FREE SHIPPING",
-            "text": "Save more with our battery deals!"
+            "bold_text_fr": "LIVRAISON GRATUITE",
+            "text": "Save more with our battery deals!",
+            "text_fr": "Économisez avec nos offres sur les piles !"
           }
         },
         "language_qqcMyi": {
