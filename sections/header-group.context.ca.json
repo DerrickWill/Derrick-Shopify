@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "header-group.json",
+  "context": {
+    "market": "ca"
+  },
+  "sections": {
+    "announcement_bar_d4HxtX": {
+      "blocks": {
+        "link_Gk3FxJ": {
+          "settings": {
+            "text": "Centre d'aide",
+            "url": "/pages/besoin d'aide"
+          }
+        },
+        "promo_kiTWVU": {
+          "settings": {
+            "bold_text": "LIVRAISON GRATUITE",
+            "text": "sur toutes les commandes de plus de 79 $ (CAD)"
+          }
+        },
+        "promo_qxUDii": {
+          "settings": {
+            "bold_text": "LIVRAISON GRATUITE",
+            "text": "Faites des économies grâce à nos offres sur les batteries !"
+          }
+        }
+      }
+    },
+    "header_section": {
+      "settings": {
+        "search_placeholder": "Recherche de produits..."
+      }
+    }
+  }
+}
