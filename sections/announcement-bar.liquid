@@ -46,6 +46,7 @@
               </span>
               {%- form 'localization', id: 'ann-lang-form' -%}
                 <input type="hidden" name="locale_code" id="ann-lang-input" value="{{ localization.language.iso_code }}">
+                <input type="hidden" name="return_to" value="{{ request.path }}">
                 <button type="button" class="ann-bar__lang-btn" id="annLangBtn" aria-expanded="false" aria-haspopup="listbox">
                   <span>{{ localization.language.endonym_name }}</span>
                   <span class="ann-bar__lang-arrow">&#8594;</span>

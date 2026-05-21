@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- Language switcher ---- */
-  var langBtn  = document.getElementById('annLangBtn');
-  var langDrop = document.getElementById('annLangDrop');
-  var langInput = document.getElementById('ann-lang-input');
-  var langForm  = document.getElementById('ann-lang-form');
+  var langBtn   = /** @type {HTMLElement|null} */        (document.getElementById('annLangBtn'));
+  var langDrop  = /** @type {HTMLElement|null} */        (document.getElementById('annLangDrop'));
+  var langInput = /** @type {HTMLInputElement|null} */   (document.getElementById('ann-lang-input'));
+  var langForm  = /** @type {HTMLFormElement|null} */    (document.getElementById('ann-lang-form'));
 
   if (langBtn && langDrop) {
     langBtn.addEventListener('click', function (e) {
@@ -19,14 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var code = btn.getAttribute('data-code');
         if (!code || !langInput || !langForm) return;
         langInput.value = code;
-        langForm.submit();
+        if (langForm.requestSubmit) {
+          langForm.requestSubmit();
+        } else {
+          langForm.submit();
+        }
       });
     });
 
     document.addEventListener('click', function (e) {
       if (langDrop && !langDrop.hidden) {
         var container = langBtn.closest('.ann-bar__item--lang');
-        if (container && !container.contains(e.target)) {
+        if (container && !container.contains(/** @type {Node} */ (e.target))) {
           langDrop.hidden = true;
           langBtn.setAttribute('aria-expanded', 'false');
         }
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---- Close bar ---- */
   var closeBtn = document.getElementById('annBarClose');
-  var annBar   = document.getElementById('annBar');
+  var annBar   = /** @type {HTMLElement|null} */ (document.getElementById('annBar'));
 
   if (closeBtn && annBar) {
     closeBtn.addEventListener('click', function () {
