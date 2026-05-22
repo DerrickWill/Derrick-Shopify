@@ -17,7 +17,9 @@
           "settings": {
             "icon": "star",
             "bold_text": "365 Day GUARANTEE",
-            "text": ""
+            "bold_text_fr": "",
+            "text": "",
+            "text_fr": ""
           }
         },
         "promo_JtieEi": {
@@ -25,7 +27,9 @@
           "settings": {
             "icon": "truck",
             "bold_text": "FAST SHIPPING",
-            "text": ""
+            "bold_text_fr": "",
+            "text": "",
+            "text_fr": ""
           }
         },
         "promo_KHbDUG": {
@@ -33,7 +37,9 @@
           "settings": {
             "icon": "tag",
             "bold_text": "Easy Returns",
-            "text": ""
+            "bold_text_fr": "",
+            "text": "",
+            "text_fr": ""
           }
         },
         "promo_hBFbKV": {
@@ -41,7 +47,9 @@
           "settings": {
             "icon": "chat",
             "bold_text": "4.9/5 RATING",
-            "text": ""
+            "bold_text_fr": "",
+            "text": "",
+            "text_fr": ""
           }
         }
       },
