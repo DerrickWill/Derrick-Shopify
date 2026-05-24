@@ -55,13 +55,26 @@
 </div>
 
 {% stylesheet %}
+  /* Each slide holds for 2.7s then 0.3s transition = 3s per slide, 9s total cycle */
+  @keyframes slide {
+    0%      { transform: translateX(0); }
+    30%     { transform: translateX(0); }
+    33.33%  { transform: translateX(-33.33%); }
+    63.33%  { transform: translateX(-33.33%); }
+    66.67%  { transform: translateX(-66.66%); }
+    96.67%  { transform: translateX(-66.66%); }
+    100%    { transform: translateX(0); }
+  }
+
   .layered-slideshow-section {
     position: relative;
+    animation: slide 9s infinite;
   }
 
   layered-slideshow-component {
     display: block;
     width: 100%;
+    animation: slide 9s infinite;
   }
 
   .layered-slideshow__container {
@@ -75,6 +88,7 @@
     container-type: inline-size;
     border-radius: var(--radius);
     overflow: hidden;
+    animation: slide 9s infinite;
   }
 
   .layered-slideshow__container:not([size='auto']) {
