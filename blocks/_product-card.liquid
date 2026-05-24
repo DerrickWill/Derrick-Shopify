@@ -2,10 +2,42 @@
 
 {% liquid
   assign product = closest.product
+  assign variant = product.selected_or_first_available_variant
+  assign can_add_to_cart = false
+  assign add_to_cart_text = 'products.product.unavailable' | t
+  if variant.available
+    assign can_add_to_cart = true
+    assign add_to_cart_text = 'products.product.add_to_cart' | t
+  endif
+  assign card_form_id = 'ProductCard-Form-' | append: block.id | append: '-' | append: product.id
 -%}
 
 {% capture children %}
   {% content_for 'blocks', closest.product: product %}
+  {%- if product != blank -%}
+    <div class="product-card-atc-wrapper">
+      <product-form-component
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}"
+        data-product-url="{{ product.url }}"
+        on:submit="/handleSubmit"
+        data-quantity-default="1"
+        data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}"
+      >
+        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+        {%- form 'product', product, id: card_form_id, data-type: 'add-to-cart-form' -%}
+          <input type="hidden" name="id" ref="variantId" value="{{ variant.id }}">
+          {% render 'add-to-cart-button',
+            id: card_form_id | append: '-btn',
+            class: 'add-to-cart-button button',
+            can_add_to_cart: can_add_to_cart,
+            product: product,
+            add_to_cart_text: add_to_cart_text
+          %}
+        {%- endform -%}
+      </product-form-component>
+    </div>
+  {%- endif -%}
 {% endcapture %}
 
 {% render 'product-card', children: children, product: product %}

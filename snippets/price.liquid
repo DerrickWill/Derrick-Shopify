@@ -19,6 +19,8 @@
     assign show_compare_price = true
   endif
 
+  assign savings_raw = compare_at_price | minus: price
+
   if product_resource == blank
     assign price = 1999
   endif
@@ -64,11 +66,13 @@
     assign compare_at_price = compare_at_price | money_with_currency
     assign price_min = price_min | money_with_currency
     assign price_max = price_max | money_with_currency
+    assign savings = savings_raw | money_with_currency
   else
     assign price = price | money
     assign compare_at_price = compare_at_price | money
     assign price_min = price_min | money
     assign price_max = price_max | money
+    assign savings = savings_raw | money
   endif
 -%}
 
@@ -126,6 +130,25 @@
       {% endif %}
     </div>
   {% endif %}
+  {%- if show_compare_price -%}
+    <div class="price__savings">Save {{ savings }}</div>
+  {%- endif -%}
+
+  {%- if is_product_card -%}
+    {%- assign inv_qty = selected_variant.inventory_quantity -%}
+    {%- assign sold_count = product_resource.metafields.custom.sold_count -%}
+    {%- if sold_count != blank or inv_qty > 0 -%}
+      <div class="product-inventory-stats">
+        {%- if sold_count != blank -%}
+          <span>Already Sold: {{ sold_count }}</span>
+        {%- endif -%}
+        {%- if inv_qty > 0 -%}
+          <span>Available: {{ inv_qty }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endif -%}
+
   {%- if selected_variant.unit_price and show_unit_price %}
     {%- liquid
       if use_currency

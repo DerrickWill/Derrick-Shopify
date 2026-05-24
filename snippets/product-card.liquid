@@ -54,6 +54,19 @@
   endif
 %}
 
+{% unless onboarding %}
+  {%- liquid
+    assign badge_variant = product.selected_or_first_available_variant
+    assign badge_price = badge_variant.price
+    assign badge_compare = badge_variant.compare_at_price
+    assign show_discount_badge = false
+    if badge_compare > badge_price
+      assign show_discount_badge = true
+      assign discount_pct = badge_compare | minus: badge_price | times: 100 | divided_by: badge_compare
+    endif
+  -%}
+{% endunless %}
+
 <product-card
   class="product-card size-style"
   style="{% render 'size-style', settings: block_settings %}"
@@ -106,6 +119,16 @@
       {% if block_settings.padding-block-end > 0 %}--zoom-out-padding-block-end: min(var(--padding-xs), {{ block_settings.padding-block-end | times: 0.7}}px);{% endif %}
     "
   >
+    {% unless onboarding %}
+      {% if show_discount_badge %}
+        <div class="product-badges product-badges--top-left">
+          <span class="product-badges__badge product-badges__badge--rectangle product-badges__badge--special-offer">SPECIAL OFFER</span>
+        </div>
+        <div class="product-badges product-badges--top-right">
+          <span class="product-badges__badge product-badges__badge--discount">-{{ discount_pct }}%</span>
+        </div>
+      {% endif %}
+    {% endunless %}
     {{ children }}
   </div>
 </product-card>
@@ -113,6 +136,10 @@
 {% stylesheet %}
   .product-card__placeholder-image svg {
     height: 100%;
+  }
+
+  .product-card__content {
+    position: relative;
   }
 
   .product-card__content slideshow-component {
