@@ -43,6 +43,8 @@ export class LayeredSlideshowComponent extends Component {
   #contentObserver = null;
   /** @type {ResizeObserver | null} */
   #containerObserver = null;
+  /** @type {number | null} */
+  #autoplayTimer = null;
 
   /** @returns {number} The inactive tab size in pixels based on current viewport */
   get #inactiveSize() {
@@ -85,6 +87,23 @@ export class LayeredSlideshowComponent extends Component {
     this.#updateActiveTab();
     this.#setupEventListeners();
     this.#observeContentHeight();
+    this.#startAutoplay();
+  }
+
+  #startAutoplay() {
+    this.#stopAutoplay();
+    const { tabs } = this.refs;
+    if (!tabs?.length) return;
+    this.#autoplayTimer = window.setInterval(() => {
+      this.#activate((this.#active + 1) % tabs.length);
+    }, 3000);
+  }
+
+  #stopAutoplay() {
+    if (this.#autoplayTimer !== null) {
+      clearInterval(this.#autoplayTimer);
+      this.#autoplayTimer = null;
+    }
   }
 
   #setupEventListeners() {
@@ -135,6 +154,7 @@ export class LayeredSlideshowComponent extends Component {
   #handleTabClick(/** @type {MouseEvent} */ e, /** @type {number} */ index) {
     e.preventDefault();
     this.#activate(index);
+    this.#startAutoplay();
   }
 
   #handleTabFocus(/** @type {FocusEvent} */ e, /** @type {number} */ index) {
@@ -246,6 +266,7 @@ export class LayeredSlideshowComponent extends Component {
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.#stopAutoplay();
     this.#abort?.abort();
     this.#heightObserver?.disconnect();
     this.#heightObserver = null;
