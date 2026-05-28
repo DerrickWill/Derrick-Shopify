@@ -248,12 +248,12 @@
 
   @media screen and (max-width: 749px) {
     .layered-slideshow__container {
-      --button-height: 44px;
-      --inactive-tabs-height: calc((var(--total-tabs) - 1) * var(--button-height));
+      --button-height: 0px;
+      --inactive-tabs-height: 0px;
     }
 
     .layered-slideshow__container:not([size='auto']) {
-      --layered-total-height: calc(var(--layered-panel-height-mobile, 260px) + var(--inactive-tabs-height));
+      --layered-total-height: var(--layered-panel-height-mobile, 260px);
       --active-panel-height: var(--layered-panel-height-mobile, 260px);
       min-height: var(--layered-total-height);
       height: var(--layered-total-height);

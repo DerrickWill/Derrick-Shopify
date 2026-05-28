@@ -23,8 +23,8 @@ import { isMobileBreakpoint, mediaQueryLarge } from '@theme/utilities';
 const DRAG_THRESHOLD = 5;
 const MAX_DRAG_WIDTH_RATIO = 0.8;
 const DRAG_COMPLETE_THRESHOLD = 0.5;
-const INACTIVE_SIZE = 56; // Px size of inactive tabs on desktop
-const INACTIVE_MOBILE_SIZE = 44; // Px size of inactive tabs on mobile
+const INACTIVE_SIZE = 0; // Px size of inactive tabs on desktop
+const INACTIVE_MOBILE_SIZE = 0; // Px size of inactive tabs on mobile
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
